@@ -1,0 +1,27 @@
+{
+  "name": "pdf-chapter-splitter",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A CLI tool that splits PDFs by chapters with interactive selection",
+  "main": "src/main.ts",
+  "bin": {
+    "pdf-splitter": "./bin/pdf-splitter.js"
+  },
+  "scripts": {
+    "start": "tsx src/main.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "effect": "^3.19.14",
+    "@effect/cli": "^0.73.0",
+    "@effect/platform": "^0.94.1",
+    "@effect/platform-node": "^0.104.0",
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^4.10.38"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3",
+    "tsx": "^4.19.2",
+    "@types/node": "^22.10.7"
+  }
+}
