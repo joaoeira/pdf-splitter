@@ -66,7 +66,8 @@ export const PdfSplitterLive = Layer.succeed(PdfSplitter, {
 
     const createdFiles: string[] = []
 
-    for (const chapter of chapters) {
+    for (let i = 0; i < chapters.length; i++) {
+      const chapter = chapters[i]!
       const chapterPdf = yield* Effect.tryPromise({
         try: () => PDFDocument.create(),
         catch: (e) => new PdfWriteError({ chapter: chapter.title, reason: String(e) })
@@ -98,7 +99,7 @@ export const PdfSplitterLive = Layer.succeed(PdfSplitter, {
         .replace(/\s+/g, "_")
         .substring(0, 50)
 
-      const filename = `chapter-${String(chapter.index + 1).padStart(2, "0")}_${sanitizedTitle}.pdf`
+      const filename = `chapter-${String(i + 1).padStart(2, "0")}_${sanitizedTitle}.pdf`
       const outputPath = path.join(outputDir, filename)
 
       const pdfBytes = yield* Effect.tryPromise({
